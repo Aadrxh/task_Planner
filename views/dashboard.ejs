@@ -1,0 +1,15 @@
+<h2>Your Tasks</h2>
+
+<form method="POST" action="/tasks/create">
+  <input name="title" placeholder="Task title" required />
+  <input name="description" placeholder="Description" />
+  <button type="submit">Add Task</button>
+</form>
+
+<ul>
+  <% tasks.forEach(task => { %>
+    <li><%= task.title %> --- <%= task.description %></li>
+  <% }) %>
+</ul>
+
+<a href="/logout">Logout</a>
