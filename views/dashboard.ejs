@@ -1,15 +1,71 @@
-<h2>Your Tasks</h2>
+<link rel="stylesheet" href="/home.css">
 
-<form method="POST" action="/tasks/create">
-  <input name="title" placeholder="Task title" required />
-  <input name="description" placeholder="Description" />
-  <button type="submit">Add Task</button>
-</form>
+<div class="container">
+  <h2>Your Tasks</h2>
+  
+  <div style="margin-bottom: 15px;">
+  <a href="/tasks/dashboard" 
+     style="margin-right:10px; <%= filter === 'all' ? 'font-weight:bold;' : '' %>">
+     All
+  </a>
 
-<ul>
-  <% tasks.forEach(task => { %>
-    <li><%= task.title %> --- <%= task.description %></li>
-  <% }) %>
-</ul>
+  <a href="/tasks/dashboard?filter=pending" 
+     style="margin-right:10px; <%= filter === 'pending' ? 'font-weight:bold;' : '' %>">
+     Pending
+  </a>
 
-<a href="/logout">Logout</a>
+  <a href="/tasks/dashboard?filter=completed" 
+     style="<%= filter === 'completed' ? 'font-weight:bold;' : '' %>">
+     Completed
+  </a>
+</div>
+
+  <!-- Create Task -->
+  <form method="POST" action="/tasks/create">
+    <input name="title" placeholder="Task title" required />
+    <input name="description" placeholder="Description" />
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    <% if (tasks && tasks.length > 0) { %>
+
+      <% tasks.forEach(task => { %>
+        <li style="background: <%=task.completed ? '#e6f4ea' : 'transparent' %>">
+
+          <div>
+            <strong><%= task.title %></strong>
+            <div><%= task.description || "" %></div>
+          </div>
+
+          <div style="display:flex; gap:8px;">
+
+            <!-- Toggle Complete -->
+            <form method="POST" action="/tasks/toggle/<%= task.id %>">
+              <button type="submit">
+                <%= task.completed ? "Undo" : "Done" %>
+              </button>
+            </form>
+
+            <!-- Delete -->
+            <form method="POST" action="/tasks/delete/<%= task.id %>">
+              <button type="submit" style="background:#d93025;">
+                Delete
+              </button>
+            </form>
+
+          </div>
+
+        </li>
+      <% }) %>
+
+    <% } else { %>
+
+      <p>No tasks yet.</p>
+
+    <% } %>
+  </ul>
+
+  <br>
+  <a href="/logout">Logout</a>
+</div>

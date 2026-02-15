@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Page Background */
+body {
+  background-color: #f1f3f4;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Centered Card Layout */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #202124;
+}
+
+/* Forms */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+/* Buttons */
+button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #1669c1;
+}
+
+/* Task List */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+li {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e8eaed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/* Logout Link */
+a {
+  text-decoration: none;
+  color: #1a73e8;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Auth Pages */
+.auth-box {
+  max-width: 400px;
+  margin: 100px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.auth-box form {
+  flex-direction: column;
+}
+
+.auth-box input {
+  margin-bottom: 12px;
+}
+
+.auth-box button {
+  width: 100%;
+}
