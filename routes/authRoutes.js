@@ -30,7 +30,6 @@ router.post("/signup", async (req, res) => {
     }
   });
 
-  // Generate token immediately after signup
   const token = jwt.sign(
     { id: user.id },
     process.env.JWT_SECRET,
@@ -39,19 +38,18 @@ router.post("/signup", async (req, res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: false,   // true in production
+    secure: process.env.NODE_ENV === "production",   // true in production
     sameSite: "lax"
   });
 
   res.redirect("/tasks/dashboard");
 });
 
-// Show login page
+// Show login
 router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Handle login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
